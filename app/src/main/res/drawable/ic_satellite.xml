@@ -1,0 +1,58 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="80dp"
+    android:height="80dp"
+    android:viewportWidth="80"
+    android:viewportHeight="80">
+  
+  <!-- Спутник как в дизайне Figma -->
+  <path
+      android:fillColor="#4A1A5C"
+      android:pathData="M40,20L50,30L40,40L30,30Z"/>
+  
+  <!-- Корпус спутника -->
+  <path
+      android:fillColor="#4A1A5C"
+      android:pathData="M35,35L45,35L45,45L35,45Z"/>
+  
+  <!-- Солнечные панели -->
+  <path
+      android:fillColor="#6B2C7A"
+      android:pathData="M25,37L35,37L35,43L25,43Z"/>
+  <path
+      android:fillColor="#6B2C7A"
+      android:pathData="M45,37L55,37L55,43L45,43Z"/>
+  
+  <!-- Антенна -->
+  <path
+      android:strokeColor="#4A1A5C"
+      android:strokeWidth="2"
+      android:strokeLineCap="round"
+      android:pathData="M40,35L40,25"/>
+  
+  <!-- Сигнальные волны -->
+  <path
+      android:strokeColor="#6B2C7A"
+      android:strokeWidth="1.5"
+      android:strokeLineCap="round"
+      android:fillType="nonZero"
+      android:pathData="M50,50Q55,45 60,50"/>
+  <path
+      android:strokeColor="#6B2C7A"
+      android:strokeWidth="1.5"
+      android:strokeLineCap="round"
+      android:fillType="nonZero"
+      android:pathData="M52,52Q58,47 65,52"/>
+  <path
+      android:strokeColor="#6B2C7A"
+      android:strokeWidth="1.5"
+      android:strokeLineCap="round"
+      android:fillType="nonZero"
+      android:pathData="M30,50Q25,45 20,50"/>
+  <path
+      android:strokeColor="#6B2C7A"
+      android:strokeWidth="1.5"
+      android:strokeLineCap="round"
+      android:fillType="nonZero"
+      android:pathData="M28,52Q22,47 15,52"/>
+  
+</vector>

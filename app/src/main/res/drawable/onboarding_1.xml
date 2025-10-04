@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="280dp"
+    android:height="280dp"
+    android:viewportWidth="280"
+    android:viewportHeight="280">
+  
+  <!-- Background circle -->
+  <path
+      android:pathData="M140,140m-120,0a120,120 0,1 1,240 0a120,120 0,1 1,-240 0"
+      android:fillColor="@color/primary_light"/>
+  
+  <!-- Car illustration -->
+  <path
+      android:pathData="M70,120L210,120A20,20 0,0 1,230 140L230,180A20,20 0,0 1,210 200L190,200A20,20 0,0 1,170 180L170,160L110,160L110,180A20,20 0,0 1,90 200L70,200A20,20 0,0 1,50 180L50,140A20,20 0,0 1,70 120z"
+      android:fillColor="@color/primary"/>
+  
+  <!-- Wheels -->
+  <path
+      android:fillColor="@color/text_primary"
+      android:pathData="M90,165m-15,0a15,15 0,1 1,30 0a15,15 0,1 1,-30 0"/>
+  <path
+      android:fillColor="@color/text_primary"
+      android:pathData="M190,165m-15,0a15,15 0,1 1,30 0a15,15 0,1 1,-30 0"/>
+  
+  <!-- Windows -->
+  <path
+      android:pathData="M80,130L200,130A10,10 0,0 1,210 140L210,150L70,150L70,140A10,10 0,0 1,80 130z"
+      android:fillColor="@color/surface"/>
+  
+</vector>
