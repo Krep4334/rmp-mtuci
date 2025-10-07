@@ -1,78 +1,86 @@
 [
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_vector_upper.png.flat",
-        "source": "com.drivenext.app-main-60:/drawable/vector_upper.png"
-    },
-    {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_ic_satellite.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/ic_satellite.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_ic_satellite.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\ic_satellite.xml"
     },
     {
         "merged": "com.drivenext.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "com.drivenext.app-main-60:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_onboarding_3.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/onboarding_3.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_splash_new.jpg.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\splash_new.jpg"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_my_splash_image.jpg.flat",
-        "source": "com.drivenext.app-main-60:/drawable/my_splash_image.jpg"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_vector_upper.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\vector_upper.png"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_test_image.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/test_image.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_onboarding_3.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\onboarding_3.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_splash_new.jpg.flat",
-        "source": "com.drivenext.app-main-60:/drawable/splash_new.jpg"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_auth_welcome_illustration.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/auth_welcome_illustration.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_my_splash_image.jpg.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\my_splash_image.jpg"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_splash_image.jpg.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\splash_image.jpg"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_ic_no_internet.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\ic_no_internet.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_onboarding_2.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\onboarding_2.xml"
     },
     {
         "merged": "com.drivenext.app-merged_res-58:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "com.drivenext.app-main-60:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_test_splash.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/test_splash.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_vector_down.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\vector_down.png"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_onboarding_1.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/onboarding_1.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_ic_no_internet.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/ic_no_internet.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_ic_launcher_legacy.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\ic_launcher_legacy.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_ic_launcher_legacy.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/ic_launcher_legacy.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_onboarding_1.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\onboarding_1.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_vector_down.png.flat",
-        "source": "com.drivenext.app-main-60:/drawable/vector_down.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_auth_welcome_illustration.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\auth_welcome_illustration.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/xml_data_extraction_rules.xml.flat",
-        "source": "com.drivenext.app-main-60:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_test_image.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\test_image.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/xml_backup_rules.xml.flat",
-        "source": "com.drivenext.app-main-60:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_splash_image.jpg.flat",
-        "source": "com.drivenext.app-main-60:/drawable/splash_image.jpg"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\drawable_test_splash.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\drawable\\test_splash.xml"
     },
     {
-        "merged": "com.drivenext.app-merged_res-58:/drawable_onboarding_2.xml.flat",
-        "source": "com.drivenext.app-main-60:/drawable/onboarding_2.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-merged_res-58:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\8.4\\com.drivenext.app-main-60:\\mipmap-anydpi-v26\\ic_launcher.xml"
     }
 ]

@@ -215,17 +215,17 @@ data class OnboardingPageData(
 // Данные для страниц onboarding как в дизайне Figma
 private val onboardingPages = listOf(
     OnboardingPageData(
-        imageRes = R.drawable.onboarding_1,
+        imageRes = R.drawable.splash_image,
         title = "Аренда автомобилей",
         description = "Выберите из множества автомобилей и арендуйте тот, который подходит именно вам"
     ),
     OnboardingPageData(
-        imageRes = R.drawable.onboarding_2,
+        imageRes = R.drawable.splash_new,
         title = "Безопасно и удобно",
         description = "Быстрое бронирование и безопасная аренда с полной поддержкой клиентов"
     ),
     OnboardingPageData(
-        imageRes = R.drawable.onboarding_3,
+        imageRes = R.drawable.my_splash_image,
         title = "Лучшие предложения",
         description = "Найдите лучшие предложения и сэкономьте деньги на аренде автомобиля"
     )

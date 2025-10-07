@@ -1,12 +1,18 @@
 package com.drivenext.app.presentation.navigation
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.platform.LocalContext
+import com.drivenext.app.data.local.UserPreferences
 import com.drivenext.app.presentation.screens.auth.AuthWelcomeScreen
 import com.drivenext.app.presentation.screens.auth.SignInScreen
 import com.drivenext.app.presentation.screens.auth.SignUpScreen
+import com.drivenext.app.presentation.screens.auth.SignUpStep2Screen
+import com.drivenext.app.presentation.screens.auth.SignUpStep3Screen
+import com.drivenext.app.presentation.screens.auth.SignUpSuccessScreen
+import com.drivenext.app.presentation.screens.main.MainScreen
 import com.drivenext.app.presentation.screens.onboarding.OnboardingScreen
 
 /**
@@ -15,10 +21,24 @@ import com.drivenext.app.presentation.screens.onboarding.OnboardingScreen
 @Composable
 fun DriveNextNavigation() {
     val navController = rememberNavController()
+    val context = LocalContext.current
+    val userPreferences = remember { UserPreferences(context) }
+    
+    // Проверяем, авторизован ли пользователь
+    val isLoggedIn by remember { mutableStateOf(userPreferences.isLoggedIn()) }
+    println("DEBUG: Проверка авторизации при запуске - isLoggedIn: $isLoggedIn")
+    userPreferences.debugShowAllData()
+    
+    val startDestination = if (isLoggedIn) {
+        Screen.Home.route
+    } else {
+        Screen.Onboarding.route
+    }
+    println("DEBUG: Стартовый экран: $startDestination")
     
     NavHost(
         navController = navController,
-        startDestination = Screen.Onboarding.route
+        startDestination = startDestination
     ) {
         composable(Screen.Onboarding.route) {
             OnboardingScreen(
@@ -52,7 +72,13 @@ fun DriveNextNavigation() {
                     navController.popBackStack()
                 },
                 onSignInSuccess = {
-                    // TODO: Navigate to main app screen
+                    println("DEBUG: Успешный вход, переход на главный экран")
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.AuthWelcome.route) { inclusive = false }
+                    }
+                },
+                onNavigateToSignUp = {
+                    navController.navigate(Screen.SignUp.route)
                 }
             )
         }
@@ -62,8 +88,53 @@ fun DriveNextNavigation() {
                 onNavigateBack = {
                     navController.popBackStack()
                 },
-                onSignUpSuccess = {
-                    // TODO: Navigate to main app screen
+                onNavigateToStep2 = {
+                    navController.navigate(Screen.SignUpStep2.route)
+                }
+            )
+        }
+        
+        composable(Screen.SignUpStep2.route) {
+            SignUpStep2Screen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onNavigateToStep3 = {
+                    navController.navigate(Screen.SignUpStep3.route)
+                }
+            )
+        }
+        
+        composable(Screen.SignUpStep3.route) {
+            SignUpStep3Screen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onRegistrationSuccess = {
+                    navController.navigate(Screen.SignUpSuccess.route) {
+                        popUpTo(Screen.AuthWelcome.route) { inclusive = false }
+                    }
+                }
+            )
+        }
+        
+        composable(Screen.SignUpSuccess.route) {
+            SignUpSuccessScreen(
+                onContinue = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.SignUpSuccess.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+        
+        composable(Screen.Home.route) {
+            MainScreen(
+                onLogout = {
+                    userPreferences.logout()
+                    navController.navigate(Screen.AuthWelcome.route) {
+                        popUpTo(Screen.Home.route) { inclusive = true }
+                    }
                 }
             )
         }

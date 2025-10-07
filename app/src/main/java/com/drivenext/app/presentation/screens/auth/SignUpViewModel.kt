@@ -14,12 +14,10 @@ import kotlinx.coroutines.launch
  */
 class SignUpViewModel : ViewModel() {
     
-    private val signUpUseCase = SimpleDI.signUpUseCase
-    
     private val _uiState = MutableStateFlow(SignUpUiState())
     val uiState: StateFlow<SignUpUiState> = _uiState.asStateFlow()
     
-    fun signUp(email: String, password: String, confirmPassword: String, isTermsAccepted: Boolean) {
+    fun validateStep1(email: String, password: String, confirmPassword: String, isTermsAccepted: Boolean) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(
                 isLoading = true,
@@ -29,68 +27,83 @@ class SignUpViewModel : ViewModel() {
                 errorMessage = null
             )
             
-            // Дополнительная валидация
-            if (!isTermsAccepted) {
+            // Валидация email
+            if (email.isEmpty()) {
                 _uiState.value = _uiState.value.copy(
                     isLoading = false,
-                    errorMessage = "Необходимо принять условия использования"
+                    emailError = "Введите корректный адрес электронной почты."
                 )
                 return@launch
             }
             
-            when (val result = signUpUseCase(email, password, confirmPassword)) {
-                is Resource.Success -> {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        isSignUpSuccessful = true,
-                        userId = result.data
-                    )
-                }
-                is Resource.Error -> {
-                    handleError(result.message ?: "Неизвестная ошибка")
-                }
-                is Resource.Loading -> {
-                    // Состояние загрузки уже установлено
-                }
+            if (!isValidEmail(email)) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    emailError = "Введите корректный адрес электронной почты."
+                )
+                return@launch
             }
+            
+            // Валидация пароля
+            if (password.isEmpty()) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    passwordError = "Пароль не может быть пустым"
+                )
+                return@launch
+            }
+            
+            if (password.length < 8) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    passwordError = "Пароль должен содержать минимум 8 символов"
+                )
+                return@launch
+            }
+            
+            // Валидация подтверждения пароля
+            if (confirmPassword.isEmpty()) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    confirmPasswordError = "Подтвердите пароль"
+                )
+                return@launch
+            }
+            
+            if (password != confirmPassword) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    confirmPasswordError = "Пароли не совпадают."
+                )
+                return@launch
+            }
+            
+            // Валидация чекбокса
+            if (!isTermsAccepted) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    errorMessage = "Необходимо согласиться с условиями обслуживания и политикой конфиденциальности."
+                )
+                return@launch
+            }
+            
+            // Если все валидации прошли успешно
+            _uiState.value = _uiState.value.copy(
+                isLoading = false,
+                isStep1Valid = true
+            )
         }
     }
     
-    private fun handleError(errorMessage: String) {
-        when {
-            errorMessage.contains("email", ignoreCase = true) -> {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    emailError = errorMessage
-                )
-            }
-            errorMessage.contains("пароль", ignoreCase = true) && 
-            errorMessage.contains("совпадают", ignoreCase = true) -> {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    confirmPasswordError = errorMessage
-                )
-            }
-            errorMessage.contains("пароль", ignoreCase = true) -> {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    passwordError = errorMessage
-                )
-            }
-            else -> {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    errorMessage = errorMessage
-                )
-            }
-        }
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$".toRegex()
+        return emailPattern.matches(email)
     }
 }
 
 data class SignUpUiState(
     val isLoading: Boolean = false,
-    val isSignUpSuccessful: Boolean = false,
-    val userId: String? = null,
+    val isStep1Valid: Boolean = false,
     val emailError: String? = null,
     val passwordError: String? = null,
     val confirmPasswordError: String? = null,

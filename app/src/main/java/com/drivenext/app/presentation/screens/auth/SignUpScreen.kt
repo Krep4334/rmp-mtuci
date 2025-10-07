@@ -28,7 +28,7 @@ import com.drivenext.app.presentation.theme.DriveNextTheme
 @Composable
 fun SignUpScreen(
     onNavigateBack: () -> Unit,
-    onSignUpSuccess: () -> Unit,
+    onNavigateToStep2: () -> Unit,
     viewModel: SignUpViewModel = viewModel()
 ) {
     var email by remember { mutableStateOf("") }
@@ -40,10 +40,10 @@ fun SignUpScreen(
     
     val uiState by viewModel.uiState.collectAsState()
     
-    // Обработка успешной регистрации
-    LaunchedEffect(uiState.isSignUpSuccessful) {
-        if (uiState.isSignUpSuccessful) {
-            onSignUpSuccess()
+    // Обработка успешной валидации первого шага
+    LaunchedEffect(uiState.isStep1Valid) {
+        if (uiState.isStep1Valid) {
+            onNavigateToStep2()
         }
     }
     
@@ -217,15 +217,15 @@ fun SignUpScreen(
             
             Spacer(modifier = Modifier.height(32.dp))
             
-            // Кнопка регистрации
+            // Кнопка "Далее"
             Button(
                 onClick = {
-                    viewModel.signUp(email, password, confirmPassword, isTermsAccepted)
+                    viewModel.validateStep1(email, password, confirmPassword, isTermsAccepted)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
-                enabled = !uiState.isLoading && isTermsAccepted,
+                enabled = !uiState.isLoading && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && isTermsAccepted,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary
                 )
@@ -270,7 +270,7 @@ fun SignUpScreenPreview() {
     DriveNextTheme {
         SignUpScreen(
             onNavigateBack = { },
-            onSignUpSuccess = { }
+            onNavigateToStep2 = { }
         )
     }
 }

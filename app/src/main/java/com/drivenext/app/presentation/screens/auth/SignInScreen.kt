@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.drivenext.app.R
 import com.drivenext.app.presentation.theme.DriveNextTheme
+import androidx.compose.ui.platform.LocalContext
+import com.drivenext.app.presentation.viewmodel.ViewModelFactory
 
 /**
  * Экран входа в систему
@@ -29,7 +31,8 @@ import com.drivenext.app.presentation.theme.DriveNextTheme
 fun SignInScreen(
     onNavigateBack: () -> Unit,
     onSignInSuccess: () -> Unit,
-    viewModel: SignInViewModel = viewModel()
+    onNavigateToSignUp: () -> Unit,
+    viewModel: SignInViewModel = viewModel(factory = ViewModelFactory(LocalContext.current))
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -39,7 +42,9 @@ fun SignInScreen(
     
     // Обработка успешного входа
     LaunchedEffect(uiState.isSignInSuccessful) {
+        println("DEBUG: LaunchedEffect сработал - isSignInSuccessful: ${uiState.isSignInSuccessful}")
         if (uiState.isSignInSuccessful) {
+            println("DEBUG: Вызываем onSignInSuccess()")
             onSignInSuccess()
         }
     }
@@ -153,6 +158,7 @@ fun SignInScreen(
             // Кнопка входа как в дизайне Figma
             Button(
                 onClick = {
+                    println("DEBUG: Нажата кнопка входа - email: $email, password: $password")
                     viewModel.signIn(email, password)
                 },
                 modifier = Modifier
@@ -213,6 +219,21 @@ fun SignInScreen(
                 )
             }
             
+            Spacer(modifier = Modifier.height(24.dp))
+            
+            // Кнопка "Зарегистрироваться"
+            TextButton(
+                onClick = onNavigateToSignUp,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = stringResource(R.string.sign_up),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            
             // Показ общих ошибок
             uiState.errorMessage?.let { errorMessage ->
                 Spacer(modifier = Modifier.height(16.dp))
@@ -239,7 +260,8 @@ fun SignInScreenPreview() {
     DriveNextTheme {
         SignInScreen(
             onNavigateBack = { },
-            onSignInSuccess = { }
+            onSignInSuccess = { },
+            onNavigateToSignUp = { }
         )
     }
 }
