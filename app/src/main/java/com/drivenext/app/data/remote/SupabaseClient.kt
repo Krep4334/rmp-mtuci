@@ -31,7 +31,7 @@ class SupabaseClient {
     */
     
     /**
-     * Проверка подключения к Supabase
+     * Проверяет подключение к Supabase (пока заглушка)
      */
     suspend fun isConnected(): Boolean {
         return try {

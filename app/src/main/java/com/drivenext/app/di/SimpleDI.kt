@@ -15,22 +15,23 @@ object SimpleDI {
     
     private lateinit var appContext: Context
     
+    // Инициализирует DI контейнер с контекстом приложения
     fun init(context: Context) {
         appContext = context.applicationContext
     }
     
-    // Repositories
+    // Repositories - репозитории для работы с данными
     private val supabaseClient by lazy { SupabaseClient() }
     private val authRepository: AuthRepository by lazy { AuthRepositoryImpl(supabaseClient) }
     
-    // Use Cases
+    // Use Cases - бизнес-логика приложения
     val signInUseCase by lazy { SignInUseCase(authRepository) }
     val signUpUseCase by lazy { SignUpUseCase(authRepository) }
     
-    // Utils
+    // Utils - утилиты и вспомогательные классы
     val networkConnectivityObserver by lazy { NetworkConnectivityObserver(appContext) }
     
-    // Provide methods
+    // Provide methods - методы для получения зависимостей
     fun provideAuthRepository(): AuthRepository = authRepository
     fun provideNetworkConnectivityObserver(): NetworkConnectivityObserver = networkConnectivityObserver
 }

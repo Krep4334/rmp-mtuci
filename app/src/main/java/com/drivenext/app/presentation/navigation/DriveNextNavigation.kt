@@ -24,11 +24,12 @@ fun DriveNextNavigation() {
     val context = LocalContext.current
     val userPreferences = remember { UserPreferences(context) }
     
-    // Проверяем, авторизован ли пользователь
+    // Проверяем, авторизован ли пользователь для определения стартового экрана
     val isLoggedIn by remember { mutableStateOf(userPreferences.isLoggedIn()) }
     println("DEBUG: Проверка авторизации при запуске - isLoggedIn: $isLoggedIn")
     userPreferences.debugShowAllData()
     
+    // Определяем стартовый экран в зависимости от статуса авторизации
     val startDestination = if (isLoggedIn) {
         Screen.Home.route
     } else {

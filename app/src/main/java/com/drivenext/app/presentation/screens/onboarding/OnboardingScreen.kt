@@ -41,7 +41,7 @@ fun OnboardingScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        // Верхняя панель с кнопкой "Пропустить"
+        // Верхняя панель с кнопкой "Пропустить" onboarding
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -78,7 +78,7 @@ fun OnboardingScreen(
             modifier = Modifier.padding(32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Индикаторы страниц
+            // Индикаторы страниц onboarding (точки)
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -114,7 +114,7 @@ fun OnboardingScreen(
                 }
             ) {
                 if (pagerState.currentPage < onboardingPages.size - 1) {
-                    // Кнопка "Далее" как в дизайне Figma
+                    // Кнопка "Далее" для перехода к следующей странице
                     Button(
                         onClick = {
                             coroutineScope.launch {
@@ -137,7 +137,7 @@ fun OnboardingScreen(
                         )
                     }
                 } else {
-                    // Кнопка "Поехали" как в дизайне Figma
+                    // Кнопка "Поехали" для завершения onboarding
                     Button(
                         onClick = onFinish,
                         modifier = Modifier

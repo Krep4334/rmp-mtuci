@@ -21,8 +21,10 @@ import com.drivenext.app.presentation.theme.DriveNextTheme
  */
 class MainActivity : ComponentActivity() {
     
+    // Наблюдатель за состоянием подключения к интернету
     private val connectivityObserver by lazy { SimpleDI.provideNetworkConnectivityObserver() }
     
+    // Создание активности и настройка UI с проверкой подключения
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
@@ -32,8 +34,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    // Получаем текущее состояние подключения к интернету
                     val isConnected by connectivityObserver.isConnected.collectAsState()
                     
+                    // Показываем навигацию если есть интернет, иначе экран "Нет интернета"
                     if (isConnected) {
                         DriveNextNavigation()
                     } else {

@@ -14,11 +14,14 @@ import kotlinx.coroutines.launch
  */
 class MainViewModel : ViewModel() {
     
+    // Репозиторий для работы с аутентификацией
     private val authRepository = SimpleDI.provideAuthRepository()
     
+    // Текущий авторизованный пользователь
     private val _currentUser = MutableStateFlow<User?>(null)
     val currentUser: StateFlow<User?> = _currentUser
     
+    // Состояние загрузки
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
     
@@ -26,6 +29,7 @@ class MainViewModel : ViewModel() {
         checkAuthState()
     }
     
+    // Проверяет состояние авторизации пользователя при запуске
     private fun checkAuthState() {
         viewModelScope.launch {
             _isLoading.value = true

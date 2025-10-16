@@ -21,14 +21,17 @@ class NetworkConnectivityObserver(
     val isConnected: StateFlow<Boolean> = _isConnected
     
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
+        // Обработчик подключения к сети - устанавливает статус подключения в true
         override fun onAvailable(network: Network) {
             _isConnected.value = true
         }
         
+        // Обработчик потери сети - устанавливает статус подключения в false
         override fun onLost(network: Network) {
             _isConnected.value = false
         }
         
+        // Обработчик изменения возможностей сети - проверяет наличие интернета и валидации
         override fun onCapabilitiesChanged(
             network: Network,
             networkCapabilities: NetworkCapabilities
@@ -49,6 +52,7 @@ class NetworkConnectivityObserver(
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
     }
     
+    // Проверяет текущее состояние подключения к интернету
     private fun checkCurrentConnection(): Boolean {
         val network = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
@@ -57,6 +61,7 @@ class NetworkConnectivityObserver(
                 capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
     }
     
+    // Принудительно проверяет подключение и обновляет состояние
     fun checkConnection() {
         _isConnected.value = checkCurrentConnection()
     }

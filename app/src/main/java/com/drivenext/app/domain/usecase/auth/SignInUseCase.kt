@@ -10,6 +10,7 @@ import com.drivenext.app.domain.util.Resource
 class SignInUseCase(
     private val authRepository: AuthRepository
 ) {
+    // Выполняет валидацию данных и вход пользователя в систему
     suspend operator fun invoke(email: String, password: String): Resource<User> {
         if (email.isBlank()) {
             return Resource.Error("Email не может быть пустым")

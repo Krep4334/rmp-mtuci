@@ -24,6 +24,7 @@ class SignInViewModel(
     private val _uiState = MutableStateFlow(SignInUiState())
     val uiState: StateFlow<SignInUiState> = _uiState.asStateFlow()
     
+    // Выполняет вход пользователя, проверяя данные в локальном хранилище
     fun signIn(email: String, password: String) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(
@@ -76,6 +77,7 @@ class SignInViewModel(
         }
     }
     
+    // Обрабатывает ошибки и устанавливает соответствующие поля ошибок в UI состоянии
     private fun handleError(errorMessage: String) {
         when {
             errorMessage.contains("email", ignoreCase = true) -> {

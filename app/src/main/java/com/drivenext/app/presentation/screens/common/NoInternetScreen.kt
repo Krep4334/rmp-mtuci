@@ -35,7 +35,7 @@ fun NoInternetScreen(
     ) {
         Spacer(modifier = Modifier.weight(1f))
         
-        // Контейнер для позиционирования как розетка
+        // Контейнер для позиционирования векторных изображений как розетка
         Box(
             modifier = Modifier
                 .width(120.dp)
@@ -87,7 +87,7 @@ fun NoInternetScreen(
         
         Spacer(modifier = Modifier.weight(1f))
         
-        // Кнопка как в дизайне Figma
+        // Кнопка повторной попытки подключения к интернету
         Button(
             onClick = onRetryClick,
             modifier = Modifier

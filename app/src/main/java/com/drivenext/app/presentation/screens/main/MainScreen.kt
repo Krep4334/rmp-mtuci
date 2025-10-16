@@ -32,7 +32,7 @@ fun MainScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        // Верхняя панель
+        // Верхняя панель с названием приложения и кнопкой меню
         TopAppBar(
             title = {
                 Text(
@@ -84,6 +84,7 @@ fun MainScreen(
             
             Spacer(modifier = Modifier.height(16.dp))
             
+            // Кнопка для отладки - показывает сохраненные данные
             Button(
                 onClick = { userPreferences.debugShowAllData() },
                 modifier = Modifier.fillMaxWidth()
@@ -93,6 +94,7 @@ fun MainScreen(
             
             Spacer(modifier = Modifier.height(16.dp))
             
+            // Кнопка полной очистки данных и выхода
             Button(
                 onClick = { 
                     userPreferences.clearAllData()
@@ -105,6 +107,7 @@ fun MainScreen(
             
             Spacer(modifier = Modifier.height(16.dp))
             
+            // Кнопка выхода из аккаунта (сохраняет данные)
             Button(
                 onClick = { showLogoutDialog = true },
                 modifier = Modifier.fillMaxWidth()
@@ -114,7 +117,7 @@ fun MainScreen(
         }
     }
     
-    // Диалог выхода
+    // Диалог подтверждения выхода из аккаунта
     if (showLogoutDialog) {
         AlertDialog(
             onDismissRequest = { showLogoutDialog = false },

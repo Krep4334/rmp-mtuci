@@ -28,7 +28,7 @@ class UserPreferences(context: Context) {
         Context.MODE_PRIVATE
     )
     
-    // Сохранение данных пользователя
+    // Сохраняет все данные пользователя в SharedPreferences
     fun saveUserData(
         email: String,
         password: String,
@@ -58,7 +58,7 @@ class UserPreferences(context: Context) {
         println("DEBUG: Данные сохранены в SharedPreferences")
     }
     
-    // Получение данных пользователя
+    // Получает сохраненные данные пользователя из SharedPreferences
     fun getUserData(): UserData? {
         println("DEBUG: Получение данных пользователя из SharedPreferences")
         val email = sharedPreferences.getString(KEY_EMAIL, null)
@@ -93,12 +93,12 @@ class UserPreferences(context: Context) {
         )
     }
     
-    // Проверка авторизации
+    // Проверяет, авторизован ли пользователь
     fun isLoggedIn(): Boolean {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false)
     }
     
-    // Выход из аккаунта
+    // Выходит из аккаунта, но сохраняет данные пользователя
     fun logout() {
         sharedPreferences.edit().apply {
             putBoolean(KEY_IS_LOGGED_IN, false)
@@ -107,13 +107,13 @@ class UserPreferences(context: Context) {
         }
     }
     
-    // Полная очистка данных
+    // Полностью очищает все данные пользователя
     fun clearAllData() {
         println("DEBUG: Очистка всех данных из SharedPreferences")
         sharedPreferences.edit().clear().apply()
     }
     
-    // Метод для отладки - показать все сохраненные данные
+    // Отладочный метод для вывода всех сохраненных данных в консоль
     fun debugShowAllData() {
         println("DEBUG: === Все данные в SharedPreferences ===")
         println("DEBUG: Email: ${sharedPreferences.getString(KEY_EMAIL, "НЕТ")}")
@@ -124,7 +124,7 @@ class UserPreferences(context: Context) {
         println("DEBUG: ======================================")
     }
     
-    // Получение времени последнего входа
+    // Получает время последнего входа пользователя в систему
     fun getLastLoginTime(): Long {
         return sharedPreferences.getLong(KEY_LOGIN_TIMESTAMP, 0)
     }
